@@ -1,0 +1,110 @@
+.auth-form{
+    display:flex;
+    flex-direction: column;
+    height: 100vh;
+    background: url('../assets/background.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.notification{
+    background-color: #008000;
+    color:white;
+    width: 50%;
+    margin:0 25% 5% 25% ;
+    padding: 10px 0 10px 0;
+}
+.form{
+    position:relative;
+    width: 30vw;
+    padding: 10px 0 60px 0;
+    margin-right: 35vw;
+    margin-left: 35vw;
+    border-radius: 10px;
+    background-color: #eeecec;
+    margin-top: 40px;
+}
+.input{
+    display: flex;
+    width: 80%;
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-bottom: 30px;
+    align-items: center;
+}
+.passwordInfo{
+    width: 80%;
+    margin-top: -10px;
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-bottom: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    align-items: center;
+    text-align: center;
+    color: #ffffff;
+}
+#icon > img{
+    position: relative;
+    max-width:20px;
+    height:20px;
+    margin:0;
+    object-fit: contain;
+}
+.form h1{
+    color: #008000;
+    font-size: 27px;
+    text-transform: uppercase;
+}
+
+input[type=radio]:checked + label:after {
+    opacity: 1;
+    }
+
+input {
+    width: calc(100% - 57px);
+    height: 36px;
+    margin: 0px 0 0 0px;
+    padding-left: 10px; 
+    border-radius: 0 5px 5px 0;
+    border: solid 1px #cbc9c9; 
+    box-shadow: 1px 2px 5px rgba(0,0,0,.09); 
+    background: #fff; 
+    }
+    #icon {
+    display: flex;
+    height: 36px;
+    width:40px;
+    justify-content: center;
+    align-content: center;
+    justify-items: center;
+    align-items: center;
+    padding: 2px 9px;
+    box-shadow: 1px 2px 5px rgba(0,0,0,.09); 
+    background: #008000;
+    color: #fff;
+    text-align: center;
+    border-radius: 5px 0 0 5px;
+    }
+    .note > span{
+        text-transform: capitalize;
+    }
+    .note > span > a{
+        text-decoration-line: underline;
+        color: #008000;
+        cursor: pointer;
+    }
+    .button{
+        margin-top: 25px;
+        margin-bottom: 15px;
+    }
+    .button button{
+      font-size: 16px;
+      background-color: #008000;
+      color: #ffffff;
+      padding: 8px 34px;
+      outline: none;
+      border-style: none;
+      border-radius: 4px;
+      text-transform: uppercase;
+      cursor: pointer;
+    }

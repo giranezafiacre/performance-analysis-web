@@ -1,0 +1,46 @@
+.username{
+    text-transform: capitalize;
+}
+.body-section h3{
+    text-align: left;
+    font-weight: 400;
+    font-size: 30px;
+    color: #008000;
+}
+.body-section{
+    display:flex;
+    gap: 40px;
+    width:80vw;
+    margin-left: 10vw;
+    margin-right:10vw
+}
+.function-title{
+    text-align: left;
+    font-weight: 700;
+    font-size: 25px;
+}
+.body-section p{
+    text-align: left;
+    font-weight:600
+}
+.lower-body-section{
+    display:flex;
+    justify-content: space-between;
+}
+.lower-body-section > a{
+    color:#008000;
+    text-decoration: none;
+}
+.lower-body-section > a:hover{
+    text-decoration: underline;
+}
+.lower-body-section > a >img{
+    width:30px;
+    margin-left: 10px;
+}
+.lower-body-section > img{
+    width: 200px;
+}
+.href-text{
+    font-size: 25px;
+}
