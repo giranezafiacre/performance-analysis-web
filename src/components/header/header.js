@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import axios from 'axios';
-import { toast, ToastContainer, Zoom } from 'react-toastify';
+import { toast, Zoom } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import './header.css';
 import { userContext } from '../../appContext';

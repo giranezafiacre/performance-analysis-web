@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { Route, Redirect } from "react-router-dom";
-import propTypes from 'prop-types';
+// import propTypes from 'prop-types';
 import { userContext } from './appContext';
 
 
@@ -20,8 +20,8 @@ const PrivateRoute = (props) => {
     />
   );
 };
-PrivateRoute.propTypes = {
-  ownProps:propTypes.object.isRequired
-}
+// PrivateRoute.propTypes = {
+//   props:propTypes.object.isRequired
+// }
 
 export default PrivateRoute

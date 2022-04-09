@@ -7,15 +7,15 @@ function Footer() {
     return (
         <div className="footer">
             <div className="footer-col">
-                <img src={locationimg} alt="" srcset="" />
+                <img src={locationimg} alt=""/>
                 <span>343V+W6H, <br/>Kigali,<br/> Masoro</span>
             </div>
             <div className="footer-col">
-                <img src={phone} alt="" srcset="" />
+                <img src={phone} alt="" />
                 <span>+250724796995</span>
             </div>
             <div className="footer-col">
-                <img src={gmail} alt="" srcset="" />
+                <img src={gmail} alt="" />
                 <span>info@auca.ac.rw</span>
             </div>
         </div>

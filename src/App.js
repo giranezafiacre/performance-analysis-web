@@ -1,19 +1,16 @@
 import React from 'react';
-import { BrowserRouter as Router, Redirect, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import './App.css';
 import Login from './pages/login';
 import Signup from './pages/signup';
 import ErrorPage from './errorPage';
 import PrivateRoute from './privateRoute';
-import PrivateUploadRoute from './privateUploadRoute';
 import AppContext from './appContext';
 // import Admin from './pages/admin';
 import Upload from './pages/upload';
 import LandingPage from './pages/landingPage';
 
 function App() {
-  const props = { path: "/", component: LandingPage };
-  const propsUpload = { path: "/upload", component: Upload};
   return (
     <AppContext>
       <div className="App">

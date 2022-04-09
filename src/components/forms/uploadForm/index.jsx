@@ -4,7 +4,6 @@ import excel from '../../../assets/excel-1.png';
 import uploadimg from '../../../assets/upload-Icon1.png';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import password from '../../../assets/password.png';
 
 function uploadForm(props) {
     return (
@@ -14,7 +13,7 @@ function uploadForm(props) {
             <form onSubmit={props.handleSubmit} method='GET' action='/'>
                 <div className='input'>
                     <label id="icon" htmlFor="email">
-                        <img alt='' src={excel} />
+                        <img alt='' srcSet={excel} />
                     </label>
                     <input type="text" name="filename"
                         id="filename" onChange={props.handleChange}
@@ -24,7 +23,7 @@ function uploadForm(props) {
                 </div>
                 <div className='input'>
                     <label id="icon" htmlFor="file">
-                        <img alt='' src={uploadimg} />
+                        <img alt='' srcSet={uploadimg} />
                     </label>
                     <input type="file" onChange={props.handleChangeFile}
                     />
