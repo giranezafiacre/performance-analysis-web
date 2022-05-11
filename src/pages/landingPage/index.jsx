@@ -42,7 +42,7 @@ const Body = () => {
                     <div className='function-title'>Analyzing data</div>
                     <p>that is primary responsibility of this application. it helps users to analyze students data so that it can make sense.</p>
                     <div className='lower-body-section'>
-                        <a href="/">
+                        <a style={{'display':JSON.parse(localStorage.getItem('username'))['role']==='2'?'block':'none'}} href="/files">
                             <span className='href-text'>
                                 Do it
                             </span>
@@ -55,7 +55,7 @@ const Body = () => {
                     <div className='function-title'>Store data</div>
                     <p>another responsibility of this application is storage of those data. this application will protect your data file.</p>
                     <div className='lower-body-section'>
-                        <a href="/upload">
+                        <a style={{'display':JSON.parse(localStorage.getItem('username'))['role']==='1'?'block':'none'}} href="/upload">
                             <span className='href-text'>
                                 Do it
                             </span>
@@ -68,7 +68,7 @@ const Body = () => {
                     <div className='function-title'>Read data</div>
                     <p>also this application will be able to help you read data stored in our database with their description.</p>
                     <div className='lower-body-section'>
-                        <a href="/">
+                        <a href="/files">
                             <span className='href-text'>
                                 Do it
                             </span>

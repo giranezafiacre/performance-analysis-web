@@ -17,7 +17,7 @@
     list-style-type: none;
     cursor: pointer;
 }
-.header  li > img{
+.header  li  img{
     position: relative;
     height: 50px;
 }

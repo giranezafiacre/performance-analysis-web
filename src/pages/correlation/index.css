@@ -1,0 +1,30 @@
+.input select{
+    width: calc(100% - 57px);
+    height: 36px;
+    margin: 0px 0 0 0px;
+    padding-left: 10px; 
+    border-radius: 0 5px 5px 0;
+    border: solid 1px #cbc9c9; 
+    box-shadow: 1px 2px 5px rgba(0,0,0,.09); 
+    background: #fff; 
+}
+.apexcharts-legend-text,tspan{
+    text-transform: capitalize;
+}
+.apexcharts-legend{
+    inset: auto 0 -60px!important;
+}
+foreignObject{
+    overflow: visible!important;
+}
+svg{
+    overflow: visible!important;
+}
+#icon {
+    display: flex;
+    height: 36px;
+    width: 60px!important;
+}
+.diagram-description p,.diagram-description h3{
+    text-align: left!important;
+}

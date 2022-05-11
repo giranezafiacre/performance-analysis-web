@@ -1,8 +1,7 @@
 import React from 'react';
-// import axios from 'axios';
+import axios from 'axios';
 import Header from '../../components/header/header';
 import UploadForm from '../../components/forms/uploadForm';
-import Footer from '../../components/footer';
 import { toast, Zoom } from 'react-toastify';
 import './index.css';
 
@@ -82,68 +81,68 @@ class upload extends React.Component {
                 this.state.file
               ); 
             console.log(JSON.parse(localStorage.getItem('user'))["key"])
-            // axios
-            //     .post("http://127.0.0.1:8000/upload/", dataInput, {
-            //         headers: {
-            //             'Authorization': `token ${JSON.parse(localStorage.getItem('user'))["key"]}`,
-            //         },
-            //     })
-            //     .then((res) => {
-            //         toast.success('🚀 uploaded successful!', {
-            //             position: "top-center",
-            //             autoClose: 5000,
-            //             transition: Zoom,
-            //             hideProgressBar: false,
-            //             closeOnClick: true,
-            //             pauseOnHover: true,
-            //             draggable: true,
-            //             progress: undefined,
-            //         })
-            //         setTimeout(() => {
-            //             this.setState({
-            //                 filename: '',
-            //                 file: '',
-            //             });
-            //         }, 5000)
+            axios
+                .post("http://127.0.0.1:8000/upload/", dataInput, {
+                    headers: {
+                        'Authorization': `token ${JSON.parse(localStorage.getItem('user'))["key"]}`,
+                    },
+                })
+                .then((res) => {
+                    toast.success('🚀 uploaded successful!', {
+                        position: "top-center",
+                        autoClose: 5000,
+                        transition: Zoom,
+                        hideProgressBar: false,
+                        closeOnClick: true,
+                        pauseOnHover: true,
+                        draggable: true,
+                        progress: undefined,
+                    })
+                    setTimeout(() => {
+                        this.setState({
+                            filename: '',
+                            file: '',
+                        });
+                    }, 5000)
 
-            //     })
-            //     .catch((err) => {
-            //         console.log(err.response)
-            //         if (err.response.status === 403) {
-            //             toast.error("not authorized", {
-            //                 position: "top-center",
-            //                 autoClose: 5000,
-            //                 transition: Zoom,
-            //                 hideProgressBar: false,
-            //                 closeOnClick: true,
-            //                 pauseOnHover: true,
-            //                 draggable: true,
-            //                 progress: undefined,
-            //             })
-            //         } else if (err.response.status === 500) {
-            //             toast.error("internal server error", {
-            //                 position: "top-center",
-            //                 autoClose: 5000,
-            //                 transition: Zoom,
-            //                 hideProgressBar: false,
-            //                 closeOnClick: true,
-            //                 pauseOnHover: true,
-            //                 draggable: true,
-            //                 progress: undefined,
-            //             })
-            //         } else {
-            //             toast.error(err.response.request.responseText, {
-            //                 position: "top-center",
-            //                 autoClose: 5000,
-            //                 transition: Zoom,
-            //                 hideProgressBar: false,
-            //                 closeOnClick: true,
-            //                 pauseOnHover: true,
-            //                 draggable: true,
-            //                 progress: undefined,
-            //             })
-            //         }
-            //     });
+                })
+                .catch((err) => {
+                    console.log(err.response)
+                    if (err.response.status === 403) {
+                        toast.error("not authorized", {
+                            position: "top-center",
+                            autoClose: 5000,
+                            transition: Zoom,
+                            hideProgressBar: false,
+                            closeOnClick: true,
+                            pauseOnHover: true,
+                            draggable: true,
+                            progress: undefined,
+                        })
+                    } else if (err.response.status === 500) {
+                        toast.error("internal server error", {
+                            position: "top-center",
+                            autoClose: 5000,
+                            transition: Zoom,
+                            hideProgressBar: false,
+                            closeOnClick: true,
+                            pauseOnHover: true,
+                            draggable: true,
+                            progress: undefined,
+                        })
+                    } else {
+                        toast.error(err.response.request.responseText, {
+                            position: "top-center",
+                            autoClose: 5000,
+                            transition: Zoom,
+                            hideProgressBar: false,
+                            closeOnClick: true,
+                            pauseOnHover: true,
+                            draggable: true,
+                            progress: undefined,
+                        })
+                    }
+                });
         } else {
             toast.error('file should match', {
                 position: "top-center",
@@ -159,7 +158,7 @@ class upload extends React.Component {
     }
     render() {
         return (
-            <div className='upload-form'>
+            <div className='auth-form'>
                 <Header />
                 <UploadForm
                     filename={this.state.filename}
@@ -173,7 +172,6 @@ class upload extends React.Component {
                     onMouseDown={this.onMouseDown}
                     onBlur={this.onBlur}
                 />
-                <Footer />
             </div>
         )
     }

@@ -67,7 +67,7 @@ function Header() {
     return (
         <div className='header'>
             <ul>
-                <li><img src={logo} alt='' /></li>
+                <li><a href='http://localhost:3000/'><img src={logo} alt='' /></a></li>
                 <li>About Us</li>
                 <li>Why students data analytics?</li>
                 <CheckUser />

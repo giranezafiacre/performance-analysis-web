@@ -79,11 +79,10 @@ class signup extends React.Component {
         e.preventDefault();
         if (this.state.password === this.state.confirmPassword) {
             axios
-                .post("http://127.0.0.1:8000/app/auth/register/", {
+                .post("http://127.0.0.1:8000/auth/register/", {
                     email: this.state.email,
-                    username: this.state.fullname,
-                    password1: this.state.password,
-                    password2: this.state.password,
+                    fullname: this.state.fullname,
+                    password: this.state.password,
                 })
                 .then((res) => {
                     toast.success('🚀 sign up successful!', {
@@ -110,7 +109,8 @@ class signup extends React.Component {
                 .catch((err) => { 
                     console.log(err.response)
                     if(err.response.status === 400){
-                    toast.error("there is user with this email or username already", {
+                        console.log(err.response)
+                    toast.error('Bad Request', {
                         position: "top-center",
                         autoClose: 5000,
                         transition: Zoom,
