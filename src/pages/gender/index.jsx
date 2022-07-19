@@ -9,6 +9,9 @@ function Gender() {
     const [maleMarks,setMaleMarks] = useState()
     const [femaleMarks,setfemaleMarks] = useState()
     const getData = async () => {
+        if(!localStorage.getItem('username')){
+            window.location.href = 'http://localhost:3000/login'
+        }
         const response = await fetch("http://127.0.0.1:8000/gender-histogram/")
             .then((res) => res.json())
             .catch((error) => {

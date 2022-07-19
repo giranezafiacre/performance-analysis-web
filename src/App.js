@@ -15,6 +15,7 @@ import Gender from './pages/gender';
 import Teacher from './pages/teacher';
 import Health from './pages/health';
 import CorrelationResult from './pages/correlation/correlationResult';
+import Edit from './pages/upload/Edit';
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
             <Route path='/login' component={Login} />
             <Route path='/signup' component={Signup} />
             <Route path='/upload' component={Upload} />
+            <Route path='/edit' component={Edit} />
             <Route path='/files' component={FileDashboard} />
             <Route path='/correlations' component={Correlation} />
             <Route path='/overview' component={Overview} />

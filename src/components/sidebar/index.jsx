@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 function Sidebar(props) {
-    const [clicked, setClicked] = useState(false)
+    const [clicked, setClicked] = useState(localStorage.getItem('click')?true:false)
     return (
         <div className="sidebar" style={{
             'width': '300px',
@@ -56,7 +56,7 @@ function Sidebar(props) {
                 </div>
 
                 <div className='overview' onClick={(e) => {
-                    setClicked(true)
+                    localStorage.setItem('click',true)
                     window.location.href = 'http://localhost:3000/gender'
                 }} style={{ 'display':clicked?'flex':'none', 'color': (props.element === 'gender') ? '#fff' : '#000', 
                 'cursor': 'pointer', 

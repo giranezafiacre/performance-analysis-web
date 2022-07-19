@@ -4,6 +4,7 @@ import ReactApexChart from 'react-apexcharts';
 
 class ScatterChart extends React.Component {
   constructor(props) {
+    
     super(props);
 
     this.state = {
@@ -19,9 +20,15 @@ class ScatterChart extends React.Component {
           }
         },
         xaxis: {
-          type:'category',
-          title:{
-            text:props.xtitle,
+          tickAmount:props.tickAmount,
+          labels: {
+            formatter: function (value) {
+              const factors=JSON.parse(localStorage.getItem('factors'))
+              return factors[value];
+            }
+          },
+          title: {
+            text: props.xtitle,
           },
         },
         yaxis: {
@@ -40,10 +47,8 @@ class ScatterChart extends React.Component {
 
   render() {
     return (
-
-
       <div id="chart">
-        <ReactApexChart series={this.state.series} options={this.state.options} type="scatter" height={440} width={550} />
+        <ReactApexChart series={this.state.series} options={this.state.options} type="scatter" height={440} width={850} />
       </div>)
   }
 }

@@ -28,7 +28,7 @@ function Piechart(props) {
 
     return (
         <>
-            <ReactApexChart options={state.options} chartoptions={state.chartOptions} series={state.series} type="donut" />
+            <ReactApexChart width={500} options={state.options} chartoptions={state.chartOptions} series={state.series} type="donut" />
         </>
 
     )

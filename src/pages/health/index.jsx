@@ -10,6 +10,9 @@ function Health() {
     const [chronic_diseaseMarks,setChronic_diseaseMarks] = useState()
     const [disabilityMarks,setDisabilityMarks] = useState()
     const getData = async () => {
+        if(!localStorage.getItem('username')){
+            window.location.href = 'http://localhost:3000/login'
+        }
         const response = await fetch("http://127.0.0.1:8000/health-histogram/")
             .then((res) => res.json())
             .catch((error) => {

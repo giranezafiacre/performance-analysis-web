@@ -11,6 +11,9 @@ function Correlations() {
     const [course, setCourse] = useState('select');
     const [factor, setFactors] = useState('select');
     const getData = async () => {
+        if(!localStorage.getItem('username')){
+            window.location.href = 'http://localhost:3000/login'
+        }
         const response = await fetch("http://127.0.0.1:8000/file/" + localStorage.getItem('file') + "/")
             .then((res) => res.json())
             .catch((error) => {

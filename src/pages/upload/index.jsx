@@ -45,18 +45,7 @@ class upload extends React.Component {
         this.nofication = this.changeNotification();
     }
     handleChange(e) {
-        // if (e.target.name === "file") {
         this.changeNotification(e.target.value);
-        
-        // let fileValue = this.state.fileInfo ? '' : e.target.value;
-        //     if(this.state.fileInfo){
-
-        //     }
-        //     this.setState({
-        //         [e.target.name]: fileValue
-        //     })
-        // } else {
-                 // }
         this.setState({
             [e.target.name]: e.target.value
         })
@@ -103,6 +92,7 @@ class upload extends React.Component {
                             filename: '',
                             file: '',
                         });
+                        window.location.href = 'http://localhost:3000/files'
                     }, 5000)
 
                 })

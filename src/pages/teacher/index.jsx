@@ -6,6 +6,9 @@ import Sidebar from '../../components/sidebar';
 function Teacher() {
     const [data, setData] = useState();
     const getData = async () => {
+        if(!localStorage.getItem('username')){
+            window.location.href = 'http://localhost:3000/login'
+        }
         const response = await fetch("http://127.0.0.1:8000/teacher-histogram/")
             .then((res) => res.json())
             .catch((error) => {

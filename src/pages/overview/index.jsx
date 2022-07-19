@@ -5,10 +5,13 @@ import Sidebar from '../../components/sidebar';
 
 function Overview() {
   const [data, setData] = useState();
-  if(!localStorage.getItem('user')){
-    window.location.href="http://localhost:3000/login"
+  if (!localStorage.getItem('user')) {
+    window.location.href = "http://localhost:3000/login"
   }
   const getData = async () => {
+    if (!localStorage.getItem('username')) {
+      window.location.href = 'http://localhost:3000/login'
+    }
     const response = await fetch("http://127.0.0.1:8000/latest/")
       .then((res) => res.json())
       .catch((error) => {
@@ -27,8 +30,8 @@ function Overview() {
         <div>
           <Sidebar element='overview' />
         </div>
-        <div >
-          <div style={{ 'display': 'flex', 'gap': '20px' }}>
+        <div style={{ 'marginTop': '10vh' }}>
+          <div style={{ 'display': 'flex', 'justifyContent': 'center' }}>
             <Piechart labels={data ? Object.keys(data['program']) : []} series={data ? Object.values(data['program']) : []} />
             <Piechart labels={data ? Object.keys(data['gender']) : []} series={data ? Object.values(data['gender']) : []} />
           </div>

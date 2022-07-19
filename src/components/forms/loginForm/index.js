@@ -1,5 +1,4 @@
 import React from 'react';
-// import './loginForm.css';
 import gmail from '../../../assets/gmail.png';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';

@@ -26,13 +26,12 @@ function uploadForm(props) {
                         <img alt='' srcSet={uploadimg} />
                     </label>
                     <input type="file" onChange={props.handleChangeFile}
-                    />
+                    accept=".csv"/>
                 </div>
                 <div className='fileInfo' style={{
                     display: props.visible ? 'block' : 'none',
                     backgroundColor: props.fileInfo === 'Strong password' ? '#459445' : '#00bfff'
                 }}>
-                    {props.fileInfo}
                 </div>
                 <div className='button'>
                     <button type='submit'>upload</button>
