@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import gmail from '../../../assets/gmail.png';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import password from '../../../assets/password.png';
 
-function loginForm(props) {
+function LoginForm(props) {
+    const [type,setType] = useState(true)
         return (
             <div className='form'>
                 <ToastContainer />
@@ -24,11 +25,16 @@ function loginForm(props) {
                         <label id="icon" htmlFor="password">
                             <img alt='' src={password} />
                         </label>
-                        <input type="password" name="password"
+                        <input type={type?'password':'text'} name="password"
                             id="password" onChange={props.handleChange}
                             placeholder="Password" value={props.password} 
                             required
                         />
+                    </div>
+                    <div className=''>
+                       <input type="checkbox" className="form-check-input" onClick={(e)=>{
+                        setType(!type);
+                        }} />{' '}Show Password
                     </div>
                     
                     <div className='button'>
@@ -41,4 +47,4 @@ function loginForm(props) {
             </div>
         )
 }
-export default loginForm;
+export default LoginForm;

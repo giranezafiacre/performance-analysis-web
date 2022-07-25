@@ -1,11 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import gmail from '../../../assets/gmail.png';
 import username from '../../../assets/username.png';
 import password from '../../../assets/password.png';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-function signupForm(props) {
+function SignupForm(props) {
     return (
         <div className='form'>
             <ToastContainer />
@@ -38,6 +38,7 @@ function signupForm(props) {
                         value={props.password} placeholder="Password" required
                     />
                 </div>
+
                 <div className='passwordInfo' style={{
                     display: props.visible ? 'block' : 'none',
                     backgroundColor: props.passwordInfo === 'Strong password' ? '#459445' : '#00bfff'
@@ -66,4 +67,4 @@ function signupForm(props) {
         </div>
     )
 }
-export default signupForm
+export default SignupForm

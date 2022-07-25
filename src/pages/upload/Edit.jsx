@@ -213,7 +213,7 @@ function Edit() {
                     }}>
                     </div>
                     <div className='button'>
-                        <button type='submit'>upload</button>
+                        <button type='submit'>update</button>
                     </div>
                 </form>
             </div>

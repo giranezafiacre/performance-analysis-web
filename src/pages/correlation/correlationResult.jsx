@@ -1,29 +1,50 @@
 import React, { useState, useEffect } from 'react';
 import Header from '../../components/header/header';
+import Histogram from '../../components/histogram';
 import ScatterChart from '../../components/scatterChart';
+import Piechart from '../../components/piechart';
 
+function Piecharts(props) {
+    console.log(props.datas)
+    let k=0
+    if(props.datas){
+        const charts= props.datas?.map((data)=>{
+            k++;
+          return(
+          <div style={{'marginBottom':'120px','marginLeft':'-60px'}} key={k}>
+            <h4>{data['name']}</h4>
+            <Piechart labels={['succeeded','failed']} series={[data['succeeded'],data['failed']]} />
+          </div> 
+          );
+        })
+        return charts
+    }else{
+     return null;
+    }
+    
+}
 function CorrelationResult() {
     const [data, setData] = useState();
     const [marks, setMarks] = useState();
-    const [factor,setFactor] = useState();
-    const [course,setCourse] = useState();
+    const [factor, setFactor] = useState();
+    const [course, setCourse] = useState();
     const getData = async () => {
-        if(!localStorage.getItem('username')){
+        if (!localStorage.getItem('username')) {
             window.location.href = 'http://localhost:3000/login'
         }
-        if(localStorage.getItem('factor')==0){
-         setFactor('Teachers')
+        if (localStorage.getItem('factor') == 0) {
+            setFactor('Teachers')
         }
-        if(localStorage.getItem('factor')==1){
+        if (localStorage.getItem('factor') == 1) {
             setFactor('Background')
         }
-        if(localStorage.getItem('factor')==2){
+        if (localStorage.getItem('factor') == 2) {
             setFactor('Health Status')
         }
-        if(localStorage.getItem('factor')==3){
+        if (localStorage.getItem('factor') == 3) {
             setFactor('Gender')
         }
-        if(localStorage.getItem('factor')==4){
+        if (localStorage.getItem('factor') == 4) {
             setFactor('Program')
         }
         setCourse(localStorage.getItem('course'))
@@ -38,16 +59,7 @@ function CorrelationResult() {
                 console.log(error)
             });
 
-
-        let factors = {}
-        let marks = response.marks_factors.map(v => {
-            factors[parseInt(v[0].split(",")[1])] = v[0].split(",")[0]
-            return [parseInt(v[0].split(",")[1]), v[1]];
-        })
-        
-        localStorage.setItem('factors', JSON.stringify(factors))
-        console.log('hi:', marks)
-        setMarks(marks)
+        console.log(response)
         setData(response)
     }
 
@@ -60,19 +72,20 @@ function CorrelationResult() {
             <div style={{ 'display': 'flex', 'alignItems': 'start', 'justifyContent': 'center', 'marginTop': '80px' }}>
 
                 <div style={{ 'marginRight': '20px' }}>
-                    {data ? <ScatterChart series={[
+                    <Histogram labels={Object.keys(data ? data.marks_factors : '')} series={[
                         {
-                            name: localStorage.getItem('course'),
-                            data: marks
-                        }
-                    ]} tickAmount={Object.keys(JSON.parse(localStorage.getItem('factors'))).length} xtitle={factor} ytitle={'Marks of '+ course} /> : ''}
+                            name: 'marks',
+                            type: "column",
+                            data: Object.values(data ? data.marks_factors : '')
+                        }]} xtitle={factor} ytitle={'Marks of ' + course} />
                 </div>
                 <div>
                     <h3 style={{ 'textTransform': 'uppercase', 'color': 'green', 'letterSpacing': '0.1em' }}>description</h3>
                     <div className='diagram-description'>
                         <p><span >type of diagram shown:</span>scatter diagram</p>
                         <p><span>type of correlation:</span>{data?.correlation_result > 0 ? 'positive correlation' : 'negative correlation'}</p>
-                        <p><span>correlation coefficient:</span>{data?.correlation_result.toFixed(2)}</p>
+                        <p><span>correlation coefficient:</span>{(data?.correlation_result == -2) ? 'not applicable' : data?.correlation_result.toFixed(2)}</p>
+                        <Piecharts datas={data?.data} />
                     </div>
                 </div>
             </div>

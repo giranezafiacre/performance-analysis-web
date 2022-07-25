@@ -14,7 +14,7 @@ function Teacher() {
             .catch((error) => {
                 console.log(error)
             });
-        console.log(response.data)
+        console.log(response)
         setData(response)
     }
     useEffect(() => {

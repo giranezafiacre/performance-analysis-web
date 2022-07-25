@@ -16,6 +16,7 @@ import Teacher from './pages/teacher';
 import Health from './pages/health';
 import CorrelationResult from './pages/correlation/correlationResult';
 import Edit from './pages/upload/Edit';
+import Report from './pages/report';
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
         <Router>
           <Switch>
           {/* /correlations */}
+            <Route path='/report' component={Report} />
             <Route path='/login' component={Login} />
             <Route path='/signup' component={Signup} />
             <Route path='/upload' component={Upload} />

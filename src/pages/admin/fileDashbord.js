@@ -6,12 +6,15 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import pencil from '../../assets/edit.png';
 import dustbin from '../../assets/delete.png';
+import report from '../../assets/report.png';
 import Sidebar from '../../components/sidebar';
 
 const user = JSON.parse(localStorage.getItem('user'));
 function FileDashboard() {
     const history = useHistory();
     const [data, setData] = useState();
+    const [filteredData, setFilteredData] = useState();
+    const [password, setPassword] = useState('');
     const [select, setSelect] = useState(null);
 
     const getData = async () => {
@@ -20,10 +23,28 @@ function FileDashboard() {
             .catch((error) => {
                 console.log(error)
             });
-        setData(response)
+
         console.log(response)
+        setData(response)
+        setFilteredData(response)
     }
 
+    function checkSearch() {
+        if (password !== '') {
+            const filterData = data.filter((item) => {
+                console.log(item.Actual_file.split('/')[5])
+                let filename = item.Actual_file.split('/')[5]
+                return filename.toLowerCase().includes(password.toLowerCase())
+            })
+            setFilteredData(filterData)
+        } else {
+            setFilteredData(data)
+        }
+    }
+    const handleChangePassword = async (e) => {
+        checkSearch();
+        setPassword(e.target.value)
+    }
     const handleChange = (e) => {
         setSelect(e.target.value)
     }
@@ -45,11 +66,10 @@ function FileDashboard() {
         redirecting();
     })
     useEffect(() => {
-        console.log('role:', JSON.parse(localStorage.getItem('username'))['role'])
         if (!data) getData();
-    })
+    }, [])
 
-    const renderData = data ? data.map((file) => {
+    const renderData = filteredData ? filteredData.map((file) => {
         const { id, Actual_file } = file;
         return (
             <>
@@ -57,7 +77,13 @@ function FileDashboard() {
                     <td>{id}</td>
                     <td className="center">{Actual_file.split('/')[5]}</td>
                     <td className="center d-flex" style={{ 'justifyContent': 'center' }}>
-
+                         
+                        <a style={{ 'marginRight':'10px', 'border': '1px solid #ced4da'}} href onClick={async (e) => {
+                            e.preventDefault()
+                            localStorage.setItem('reportId',id)
+                            window.location.href = 'http://localhost:3000/report'
+                        }} className="btn btn-light">
+                            <img src={report} style={{ 'height': '15px' }} alt="" /> Generate Report</a>
                         <a style={{ 'margin-right': '20px', 'display': JSON.parse(localStorage.getItem('username'))['role'] === '1' ? 'block' : 'none' }} href onClick={(e) => {
                             e.preventDefault();
                             localStorage.setItem('id', id);
@@ -86,15 +112,15 @@ function FileDashboard() {
                             })
                         }} className="btn btn-danger">
                             <img src={dustbin} style={{ 'height': '15px' }} alt="" /> delete</a>
-
                         <form style={{ 'display': JSON.parse(localStorage.getItem('username'))['role'] === '2' ? 'flex' : 'none' }}>
-                            <select style={{ 'width': '250px' }} class="form-select" aria-label="Default select example" value={select} onChange={handleChange} onClick={(e) => {
-                                localStorage.setItem('file', id)
+                            <button className='btn btn-secondary' onClick={(e) => {
+                                localStorage.setItem('file', id);
+                                history.push({
+                                    pathname: '/correlations',
+                                });
                             }}>
-                                <option selected value="">How you want to visualize data in file</option>
-                                <option value="diagrams">through diagram</option>
-                                <option value="correlations">factors affect performance</option>
-                            </select>
+                                Track Students Performance
+                            </button>
                         </form>
 
                     </td>
@@ -111,21 +137,26 @@ function FileDashboard() {
                 <div>
                     <Sidebar element='files' />
                 </div>
-                <div className="row" style={{ 'margin-top': '5rem', 'overflow': 'scroll' }}>
+                <div className="row" style={{ 'margin-top': '5rem', 'height': '70vh'}}>
                     <div className="col-md-12" >
                         {/* <!-- Advanced Tables --> */}
                         <div className="panel panel-default">
                             <div className="panel-heading" style={{ "display": "flex", "flex-direction": "row", "margin-bottom": "10px" }}>
-                                <h4 style={{ "text-align": "center", "margin-left": "40vw" }}>Items List</h4>
+                                <h4 style={{ "text-align": "center",'marginLeft':'60px' }}>Files List</h4>
                                 <a style={{
                                     "margin-left": "5vw", "justify-self": "flex-end", "text-decoration": "none",
                                     "color": "#fff", 'display': JSON.parse(localStorage.getItem('username'))['role'] === '1' ? 'block' : 'none'
                                 }} className="btn btn-secondary" title="add new item"
                                     href="http://localhost:3000/upload/" >+</a>
+                                <input type="text" name="search" style={{ 'borderRadius': '5px', 'width': '150px', 'margin-left': '10px' }}
+                                    id="search" onChange={handleChangePassword}
+                                    placeholder="Search here" value={password}
+                                    required
+                                />
                             </div>
                             <div className="panel-body">
                                 <div className="table-responsive">
-                                    <table className="table table-striped table-bordered table-hover" style={{ 'width': '80vw', 'margin-right': '10vw', 'margin-left': '10vw' }} id="dataTables-example">
+                                    <table className="table table-striped table-bordered table-hover" style={{ 'width': 'max-content', 'margin-right': '10vw', 'margin-left': '20px' }} id="dataTables-example">
                                         <thead>
                                             <tr>
                                                 <th>id</th>
