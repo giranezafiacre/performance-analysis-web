@@ -11,8 +11,8 @@ function Piecharts(props) {
         const charts= props.datas?.map((data)=>{
             k++;
           return(
-          <div style={{'marginBottom':'120px','marginLeft':'-60px'}} key={k}>
-            <h4>{data['name']}</h4>
+          <div style={{'marginBottom':'120px'}} key={k}>
+            <h4 style={{'marginLeft':'10px','textTransform':'capitalize'}}>{data['name']}</h4>
             <Piechart labels={['succeeded','failed']} series={[data['succeeded'],data['failed']]} />
           </div> 
           );
